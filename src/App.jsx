@@ -262,7 +262,7 @@ const MehendiPortfolio = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative py-20 px-4">
+      {/* <section id="home" className="relative py-20 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-8 animate-fade-in">
             <h2 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-rose-600 via-pink-600 to-orange-600 bg-clip-text text-transparent">
@@ -285,6 +285,63 @@ const MehendiPortfolio = () => {
                 Book Now
               </a>
             </div>
+          </div>
+        </div>
+      </section> */}
+      <section
+        id="home"
+        className="relative min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-pink-600 via-rose-500 to-orange-500"
+      >
+        <div className="max-w-3xl w-full text-center text-white">
+          {/* Camera Icon */}
+          <div className="flex justify-center mb-6">
+            <div className="w-16 h-16 flex items-center justify-center bg-white/20 rounded-2xl backdrop-blur-md">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-8 h-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 7h3l2-3h8l2 3h3v11a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"
+                />
+                <circle cx="12" cy="13" r="4" />
+              </svg>
+            </div>
+          </div>
+
+          {/* Heading */}
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
+            Henna by Nazu
+          </h1>
+
+          {/* Subtitle */}
+          <p className="text-lg md:text-xl text-white/90 mb-8">
+            Creating Beautiful Bridal Mehendi Designs
+          </p>
+
+          {/* Buttons */}
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="#contact"
+              className="px-8 py-3 bg-white text-pink-600 rounded-full font-semibold shadow-lg hover:scale-105 transition"
+            >
+              📞 Book Now
+            </a>
+
+            <a
+              href="https://wa.me/916363393990
+"
+              target="_blank"
+              rel="noreferrer"
+              className="px-8 py-3 bg-green-500 text-white rounded-full font-semibold shadow-lg hover:scale-105 transition"
+            >
+              💬 WhatsApp
+            </a>
           </div>
         </div>
       </section>
@@ -314,6 +371,7 @@ const MehendiPortfolio = () => {
           </div>
 
           {/* Gallery Grid */}
+          {/* Gallery Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
             {filteredGallery.map((item, index) => (
               <div
@@ -323,26 +381,12 @@ const MehendiPortfolio = () => {
               >
                 {/* Fixed aspect ratio container for uniform image sizes */}
                 <div className="relative w-full pt-[100%]">
-                  <div className="absolute inset-0 bg-gradient-to-br from-rose-200 via-pink-200 to-orange-200 flex items-center justify-center">
-                    <img
-                      src={item.image}
-                      alt={item.type}
-                      className="w-full h-full object-cover cursor-pointer"
-                      onClick={() => setSelectedImage(item.image)}
-                    />
-                    {selectedImage && (
-                      <div
-                        className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
-                        onClick={() => setSelectedImage(null)}
-                      >
-                        <img
-                          src={selectedImage}
-                          alt="Selected"
-                          className="max-w-full max-h-full rounded-lg shadow-2xl"
-                        />
-                      </div>
-                    )}
-                  </div>
+                  <img
+                    src={item.image}
+                    alt={item.type}
+                    className="absolute inset-0 w-full h-full object-cover cursor-pointer"
+                    onClick={() => setSelectedImage(item.image)}
+                  />
                 </div>
 
                 {/* Overlay */}
@@ -356,124 +400,101 @@ const MehendiPortfolio = () => {
               </div>
             ))}
           </div>
+
+          {/* Selected Image Modal */}
+          {selectedImage && (
+            <div
+              className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
+              onClick={() => setSelectedImage(null)}
+            >
+              <img
+                src={selectedImage}
+                alt="Selected"
+                className="max-w-full max-h-full rounded-lg shadow-2xl"
+                onClick={(e) => e.stopPropagation()} // Prevent modal from closing when clicking image
+              />
+            </div>
+          )}
         </div>
       </section>
 
       {/* Contact Section */}
       <section
         id="contact"
-        className="relative py-16 px-4 bg-white/50 backdrop-blur-sm"
+        className="relative py-16 px-4 bg-gradient-to-br from-pink-500 via-rose-500 to-orange-500"
       >
-        <div className="max-w-6xl mx-auto">
-          <h3 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-rose-600 to-orange-600 bg-clip-text text-transparent">
-            Get in Touch
-          </h3>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Contact Info */}
-            <div className="space-y-6">
-              <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-rose-500 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Phone className="text-white" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2">Call Us</h4>
-                    <a
-                      href={`tel:${contactInfo.phone}`}
-                      className="text-rose-600 hover:text-rose-700 block"
-                    >
-                      {contactInfo.phone}
-                    </a>
-                    <p className="text-sm text-gray-500 mt-1">Emergency:</p>
-                    <a
-                      href={`tel:${contactInfo.emergencyPhone}`}
-                      className="text-rose-600 hover:text-rose-700"
-                    >
-                      +91 {contactInfo.emergencyPhone}
-                    </a>
-                  </div>
+        <div className="max-w-2xl mx-auto">
+          {/* Contact Cards */}
+          <div className="space-y-6">
+            {/* Call Us Card */}
+            <div className="bg-white/20 backdrop-blur-md p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all hover:bg-white/25">
+              <div className="flex flex-col items-center text-center text-white">
+                <div className="w-20 h-20 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center mb-4">
+                  <Phone className="text-white" size={36} />
                 </div>
-              </div>
-
-              <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-rose-500 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Mail className="text-white" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2">Email</h4>
-                    <a
-                      href={`mailto:${contactInfo.email}`}
-                      className="text-rose-600 hover:text-rose-700 break-all"
-                    >
-                      {contactInfo.email}
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-rose-500 to-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <MapPin className="text-white" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-lg mb-2">Visit Us</h4>
-                    <p className="text-gray-700">{contactInfo.address}</p>
-                    <a
-                      href={contactInfo.location}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-rose-600 hover:text-rose-700 text-sm mt-2 inline-block"
-                    >
-                      Get Directions →
-                    </a>
-                  </div>
-                </div>
+                <h4 className="font-bold text-2xl mb-3">Call Us</h4>
+                <a
+                  href={`tel:+91${contactInfo.emergencyPhone}`}
+                  className="text-xl font-medium hover:underline"
+                >
+                  +91 6363393990
+                </a>
               </div>
             </div>
 
-            {/* Quick Actions */}
-            <div className="space-y-4">
-              <h4 className="font-semibold text-xl mb-6">Quick Connect</h4>
-
-              <a
-                href={`https://wa.me/${contactInfo.phone}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-4 p-6 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition"
-              >
-                <MessageCircle size={32} />
-                <div>
-                  <p className="font-semibold text-lg">WhatsApp</p>
-                  <p className="text-sm opacity-90">Send us a message</p>
+            {/* Email Card */}
+            <div className="bg-white/20 backdrop-blur-md p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all hover:bg-white/25">
+              <div className="flex flex-col items-center text-center text-white">
+                <div className="w-20 h-20 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center mb-4">
+                  <Mail className="text-white" size={36} />
                 </div>
-              </a>
+                <h4 className="font-bold text-2xl mb-3">Email</h4>
+                <a
+                  href={`mailto:${contactInfo.email}`}
+                  className="text-lg font-medium hover:underline break-all"
+                >
+                  {contactInfo.email}
+                </a>
+              </div>
+            </div>
 
-              <a
-                href={contactInfo.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-4 p-6 bg-gradient-to-r from-pink-500 to-rose-600 text-white rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition"
-              >
-                <Instagram size={32} />
-                <div>
-                  <p className="font-semibold text-lg">Instagram</p>
-                  <p className="text-sm opacity-90">Follow us for updates</p>
+            {/* Instagram Card */}
+            <div className="bg-white/20 backdrop-blur-md p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all hover:bg-white/25">
+              <div className="flex flex-col items-center text-center text-white">
+                <div className="w-20 h-20 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center mb-4">
+                  <Instagram className="text-white" size={36} />
                 </div>
-              </a>
+                <h4 className="font-bold text-2xl mb-3">Instagram</h4>
+                <a
+                  href={contactInfo.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg font-medium hover:underline"
+                >
+                  @henna_by_nazu_
+                </a>
+              </div>
+            </div>
 
-              <a
-                href={`tel:${contactInfo.phone}`}
-                className="flex items-center space-x-4 p-6 bg-gradient-to-r from-rose-500 to-orange-600 text-white rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition"
-              >
-                <Phone size={32} />
-                <div>
-                  <p className="font-semibold text-lg">Call Now</p>
-                  <p className="text-sm opacity-90">Book your appointment</p>
+            {/* Visit Us Card */}
+            <div className="bg-white/20 backdrop-blur-md p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all hover:bg-white/25">
+              <div className="flex flex-col items-center text-center text-white">
+                <div className="w-20 h-20 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center mb-4">
+                  <MapPin className="text-white" size={36} />
                 </div>
-              </a>
+                <h4 className="font-bold text-2xl mb-3">Visit Us</h4>
+                <p className="text-lg font-medium mb-3">
+                  {contactInfo.address}
+                </p>
+                <a
+                  href={contactInfo.location}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg font-semibold hover:underline"
+                >
+                  Get Directions →
+                </a>
+              </div>
             </div>
           </div>
         </div>
