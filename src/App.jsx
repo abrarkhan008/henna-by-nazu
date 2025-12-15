@@ -191,7 +191,7 @@ const MehendiPortfolio = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-orange-50">
       {/* Animated Background Pattern */}
-      <div className="fixed inset-0 opacity-10 pointer-events-none">
+      <div className="absolute inset-0 opacity-10 pointer-events-none -z-10">
         <div className="absolute top-20 left-10 w-64 h-64 bg-rose-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
         <div className="absolute top-40 right-10 w-64 h-64 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-700"></div>
         <div className="absolute bottom-20 left-1/2 w-64 h-64 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-1000"></div>
@@ -381,16 +381,21 @@ const MehendiPortfolio = () => {
               >
                 {/* Fixed aspect ratio container for uniform image sizes */}
                 <div className="relative w-full pt-[100%]">
-                  <img
-                    src={item.image}
-                    alt={item.type}
-                    className="absolute inset-0 w-full h-full object-cover cursor-pointer"
-                    onClick={() => setSelectedImage(item.image)}
-                  />
+                  <button
+                    type="button"
+                    className="absolute inset-0"
+                    onClick={() => setSelectedImage(item)}
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.type}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
                 </div>
 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                   <div className="p-3 md:p-6 text-white w-full">
                     <p className="font-semibold text-sm md:text-lg">
                       {item.type}
@@ -402,7 +407,7 @@ const MehendiPortfolio = () => {
           </div>
 
           {/* Selected Image Modal */}
-          {selectedImage && (
+          {/* {selectedImage && (
             <div
               className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
               onClick={() => setSelectedImage(null)}
@@ -412,6 +417,22 @@ const MehendiPortfolio = () => {
                 alt="Selected"
                 className="max-w-full max-h-full rounded-lg shadow-2xl"
                 onClick={(e) => e.stopPropagation()} // Prevent modal from closing when clicking image
+              />
+            </div>
+          )} */}
+          {selectedImage && (
+            <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center">
+              <button
+                className="absolute top-4 right-4 text-white text-3xl"
+                onClick={() => setSelectedImage(null)}
+              >
+                ✕
+              </button>
+
+              <img
+                src={selectedImage.image}
+                alt={selectedImage.type}
+                className="max-h-[90vh] max-w-[95vw] object-contain"
               />
             </div>
           )}
@@ -512,22 +533,6 @@ const MehendiPortfolio = () => {
           </p>
         </div>
       </footer>
-
-      <style jsx>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in {
-          animation: fade-in 1s ease-out;
-        }
-      `}</style>
     </div>
   );
 };
