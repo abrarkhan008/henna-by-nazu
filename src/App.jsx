@@ -189,7 +189,7 @@ const MehendiPortfolio = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-orange-50">
+    <div className="min-h-[100dvh] w-full overflow-x-hidden bg-gradient-to-br from-rose-50 via-pink-50 to-orange-50">
       {/* Animated Background Pattern */}
       <div className="absolute inset-0 opacity-10 pointer-events-none -z-10">
         <div className="absolute top-20 left-10 w-64 h-64 bg-rose-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
@@ -290,12 +290,12 @@ const MehendiPortfolio = () => {
       </section> */}
       <section
         id="home"
-        className="relative min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-pink-600 via-rose-500 to-orange-500"
+        className="relative min-h-[100dvh] w-full flex items-center justify-center px-4 py-8 bg-gradient-to-br from-pink-600 via-rose-500 to-orange-500 overflow-hidden"
       >
-        <div className="max-w-3xl w-full text-center text-white">
+        <div className="max-w-3xl w-full text-center text-white px-4">
           {/* Camera Icon */}
           <div className="flex justify-center mb-6">
-            <div className="w-16 h-16 flex items-center justify-center bg-white/20 rounded-2xl backdrop-blur-md">
+            <div className="w-16 h-16 flex items-center justify-center bg-white/20 rounded-2xl backdrop-blur-md animate-bounce">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-8 h-8"
@@ -315,20 +315,20 @@ const MehendiPortfolio = () => {
           </div>
 
           {/* Heading */}
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
             Henna by Nazu
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-white/90 mb-8">
+          <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
             Creating Beautiful Bridal Mehendi Designs
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 w-full px-4">
             <a
               href="#contact"
-              className="px-8 py-3 bg-white text-pink-600 rounded-full font-semibold shadow-lg hover:scale-105 transition"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-white text-pink-600 rounded-full font-semibold shadow-lg hover:scale-105 transition text-center"
             >
               📞 Book Now
             </a>
@@ -338,7 +338,7 @@ const MehendiPortfolio = () => {
 "
               target="_blank"
               rel="noreferrer"
-              className="px-8 py-3 bg-green-500 text-white rounded-full font-semibold shadow-lg hover:scale-105 transition"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-green-500 text-white rounded-full font-semibold shadow-lg hover:scale-105 transition text-center"
             >
               💬 WhatsApp
             </a>
